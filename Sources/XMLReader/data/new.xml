@@ -1,0 +1,9 @@
+<root>
+	<firstChild>1</firstChild></firstChild>
+	<secondChild>2
+		<Test>value in constr</Test></Test>
+	</secondChild>
+	</secondChild><//secondChild>
+	<Test>value in constr</Test></Test>
+	<Test>value in constr</Test></Test>
+</root>
