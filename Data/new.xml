@@ -1,9 +1,6 @@
 <root>
-	<firstChild>1</firstChild></firstChild>
+	<firstChild>1</firstChild>
 	<secondChild>2
-		<Test>value in constr</Test></Test>
+		<Test>value in constr</Test>
 	</secondChild>
-	</secondChild><//secondChild>
-	<Test>value in constr</Test></Test>
-	<Test>value in constr</Test></Test>
 </root>
