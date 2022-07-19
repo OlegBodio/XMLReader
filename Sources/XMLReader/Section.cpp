@@ -2,11 +2,6 @@
 
 using namespace SS;
 
-
-
-
-
-
 Section Section::getRoot(const std::string& filePath) const
 {
 	strings lines = Section::getLines(filePath);

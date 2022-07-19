@@ -8,8 +8,6 @@ set(SOURCES
 	main.cpp
     Section.cpp
 	Section.hpp
-    XMLReader.cpp
-	XMLReader.hpp
 )
 
 add_executable(XMLreader ${SOURCES})
