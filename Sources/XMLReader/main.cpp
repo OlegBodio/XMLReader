@@ -1,11 +1,11 @@
-#include "XMLReader.hpp"
+#include "Section.hpp"
 #include <iostream>
 #include<regex>
 
 
 int main() 
 {
-	/*
+	
 std::fstream f("root.xml");
 Section root = Section("root");
 Section firstChild = Section("firstChild");
@@ -18,12 +18,11 @@ secondChild.addChild(test);
 root.addChild(secondChild);
 root.write("root.xml");
 f.close();
-*/
+
 auto fromLine = Section::fromLine;
-Section root;
-root = root.getRoot("../../Sources/XMLReader/data/root.xml");
+Section rootf;
+rootf = rootf.getRoot("../../Sources/XMLReader/data/root.xml");
 std::cout << root.toStr();
-root.write("../../Sources/XMLReader/data/new.xml");
-//const std::string line = "<root>1";
+rootf.write("../../Sources/XMLReader/data/new.xml");
 
 }
