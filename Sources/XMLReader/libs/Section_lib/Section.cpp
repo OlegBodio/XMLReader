@@ -98,8 +98,11 @@ void Section::write(std::fstream& f, unsigned tab) const
 
 void Section::write(const std::string& path) const
 	{
-    std::fstream f(path);
-    write(f,0);
+		std::fstream f(path);
+		if (f.is_open())
+		{
+			write(f, 0);
+		}
 	}
 
 std::string Section::getName()
@@ -189,6 +192,5 @@ strings Section::getLines(const std::string& filePath)
 			lines.push_back(line);
 		}
 	}
-
 	return lines;
 }
