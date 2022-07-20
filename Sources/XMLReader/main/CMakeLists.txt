@@ -1,20 +1,10 @@
 cmake_minimum_required(VERSION 3.6)
 
+set(Section_lib_dir 
+	../libs/Section_lib)
+
 # Set the project name
-project (XMLReader)
-
-
-# Creating library
-add_library(Section_lib STATIC
-	libs/Section_lib/Section.cpp
-	)
-	
-target_include_directories(Section_lib 
-	PUBLIC
-		libs/Section_lib
-)
-	
-	
+project (XMLReader)	
 
 # Create a sources variable with a link to all cpp files to compile
 set(SOURCES
