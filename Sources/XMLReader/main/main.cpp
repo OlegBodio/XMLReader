@@ -6,7 +6,7 @@
 int main() 
 {
 
-std::fstream f("../../../Sources/XMLReader/data/root.xml");
+std::fstream f("../../../Data/root.xml");
 if (f.is_open())
 {
 	Section root = Section("root");
@@ -23,6 +23,6 @@ if (f.is_open())
 }
 
 Section rootf;
-rootf = rootf.getRoot("../../../Sources/XMLReader/data/root.xml");
-rootf.write("../../../Sources/XMLReader/data/new.xml");
+rootf = rootf.getRoot("../../../Data/root.xml");
+rootf.write("../../../Data/new.xml");
 }
