@@ -24,7 +24,7 @@ struct MyData
 	}
 };
 
-PYBIND11_MODULE(pybind11module, module)
+PYBIND11_MODULE(section_py_module, module)
 {
 	module.doc() = "Pybind11Module";
 	module.def("say_hello", &say_hello);
