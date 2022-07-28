@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(MAIN_SOURCE "${PROJECT_SOURCE_DIR}/source/main")
 set(MODULE_SOURCE "${PROJECT_SOURCE_DIR}/source/module")
-set(LIBS "${PROJECT_SOURCE_DIR}/externals")
+set(SECTION_LIB_SOURCE"${PROJECT_SOURCE_DIR}/source/libs")
 cmake_minimum_required (VERSION 3.6)
 
 # pybind11
@@ -22,12 +22,9 @@ FetchContent_MakeAvailable(pybind11)
 pybind11_add_module (
     section_py_module 
     ${MODULE_SOURCE}/sectionPy.cpp
+	${MODULE_SOURCE}/sectionPy.hpp
 )
 
-target_include_directories (
-    section_py_module 
-    PRIVATE ${MODULE_SOURCE}
-)
 
 # main
 add_executable (
@@ -42,17 +39,29 @@ add_library(section_lib STATIC
 	
 target_include_directories(section_lib 
 	PUBLIC
-		section_lib
+		source/libs/sectionLib
+)
+
+target_include_directories (
+    section_py_module 
+    PRIVATE ${MODULE_SOURCE}
+	PRIVATE ${SECTION_LIB_SOURCE}
 )
 
 target_include_directories (
     main 
     PRIVATE ${MAIN_SOURCE}
     PRIVATE ${MODULE_SOURCE}
+	PRIVATE ${SECTION_LIB_SOURCE}
 )
 
 target_link_libraries(
     main
     PRIVATE pybind11::embed
+	PRIVATE section_lib
+)
+
+target_link_libraries(
+    section_py_module
 	PRIVATE section_lib
 )
