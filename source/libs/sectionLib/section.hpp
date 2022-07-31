@@ -29,8 +29,8 @@ public:
 	void write(const std::string& path) const;
 	Section getRoot(const std::string& filePath) const;
 	
-	std::string getName();
-	std::string getValue();
+	std::string getName() const;
+	std::string getValue() const;
 
 private:
 	std::string m_name = "root";

@@ -105,12 +105,12 @@ void Section::write(const std::string& path) const
 		}
 	}
 
-std::string Section::getName()
+std::string Section::getName() const
 {
 	return m_name;
 }
 
-std::string Section::getValue()
+std::string Section::getValue() const
 {
 	return m_value;
 }

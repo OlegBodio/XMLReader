@@ -1,2 +1,2 @@
-cmake -S Sources -B Solution
+cmake -B sln
 pause
