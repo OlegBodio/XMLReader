@@ -4,19 +4,12 @@
 SectionPy::SectionPy(const std::string& name, const std::string& value)
 	:root(name, value) 
 	{}
-
 void SectionPy::addChild(const Section& child) { root.addChild(child); }
 void SectionPy::setValue(const std::string& value) { root.setValue(value); }
 void SectionPy::write(const std::string& path) const { root.write(path); }
 Section SectionPy::getRoot(const std::string& filePath) const { return root.getRoot(filePath); }
 std::string SectionPy::getName() const { return root.getName(); }
 std::string SectionPy::getValue() const { return root.getValue(); }
-
-
-
-
-
-
 
 PYBIND11_MODULE(section_py_module, module)
 {
