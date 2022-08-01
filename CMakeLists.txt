@@ -35,6 +35,7 @@ add_executable (
 #add_SectionLib
 add_library(section_lib STATIC
 	source/libs/sectionLib/section.cpp
+	source/libs/sectionLib/section.hpp
 	)
 	
 target_include_directories(section_lib 
