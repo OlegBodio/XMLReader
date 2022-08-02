@@ -36,6 +36,11 @@ bool Section::isChild(const std::string& line, const std::string& childLine) con
 	return ((countTabulations(childLine) - countTabulations(line)) == 1 && isOpeningTag(childLine));
 }
 
+std::vector<Section> Section::childs() const
+{
+	return m_childs;
+}
+
 
 // Little important 
 
