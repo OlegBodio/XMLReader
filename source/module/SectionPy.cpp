@@ -11,6 +11,9 @@ Section SectionPy::getRoot(const std::string& filePath) const { return root.getR
 std::string SectionPy::getName() const { return root.getName(); }
 std::string SectionPy::getValue() const { return root.getValue(); }
 
+PYBIND11_MAKE_OPAQUE(std::string);
+PYBIND11_MAKE_OPAQUE(std::vector<std::string>);
+
 PYBIND11_MODULE(section_py_module, module)
 {
 	pybind11::class_<SectionPy>(module, "SectionPy")
