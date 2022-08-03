@@ -36,6 +36,11 @@ bool Section::isChild(const std::string& line, const std::string& childLine) con
 	return ((countTabulations(childLine) - countTabulations(line)) == 1 && isOpeningTag(childLine));
 }
 
+std::vector<Section> Section::childs() const
+{
+	return m_childs;
+}
+
 
 // Little important 
 
@@ -105,12 +110,12 @@ void Section::write(const std::string& path) const
 		}
 	}
 
-std::string Section::getName()
+std::string Section::getName() const
 {
 	return m_name;
 }
 
-std::string Section::getValue()
+std::string Section::getValue() const
 {
 	return m_value;
 }

@@ -1,7 +1,0 @@
-cmake_minimum_required (VERSION 3.6)
-
-project(Solution)
-
-# Add sub directories
-add_subdirectory(XMLReader/main)
-add_subdirectory(XMLReader/libs)

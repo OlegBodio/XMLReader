@@ -1,6 +1,0 @@
-<root>
-	<firstChild>1</firstChild>
-	<secondChild>2
-		<Test>value in constr</Test>
-	</secondChild>
-</root>
