@@ -103,7 +103,7 @@ void Section::write(std::fstream& f, unsigned tab) const
 
 void Section::write(const std::string& path) const
 	{
-		std::fstream f(path);
+		std::fstream f(path, std::fstream::out);
 		if (f.is_open())
 		{
 			write(f, 0);

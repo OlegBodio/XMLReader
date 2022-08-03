@@ -66,3 +66,8 @@ target_link_libraries(
     section_py_module
 	PRIVATE section_lib
 )
+
+add_dependencies(
+	main 
+	section_py_module
+)

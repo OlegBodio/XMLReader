@@ -11,7 +11,7 @@ int main ()
     py::scoped_interpreter python;
     auto sys = py::module_::import("sys");
     auto& append = sys.attr("path").attr("append");
-    for (auto child : pathRoot.childs())
+    for (const auto& child : pathRoot.childs())
     {
         append(child.getValue());
     }
