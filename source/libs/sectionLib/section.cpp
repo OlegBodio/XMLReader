@@ -2,6 +2,14 @@
 
 using namespace SS;
 
+Section::Section(const Section& root)
+	:m_name(root.m_name)
+	,m_value(root.m_value)
+	,m_childs(root.m_childs)
+{
+
+}
+
 Section Section::getRoot(const std::string& filePath) const
 {
 	strings lines = Section::getLines(filePath);
@@ -198,4 +206,11 @@ strings Section::getLines(const std::string& filePath)
 		}
 	}
 	return lines;
+}
+
+void Section::operator=(const Section& other)
+{
+	m_name = other.m_name;
+	m_value = other.m_value;
+	m_childs = other.m_childs;
 }

@@ -2,14 +2,31 @@
 #include "SectionPy.hpp"
 
 SectionPy::SectionPy(const std::string& name, const std::string& value)
-	:root(name, value) 
+	:m_root(name, value) 
 	{}
-void SectionPy::addChild(const Section& child) { root.addChild(child); }
-void SectionPy::setValue(const std::string& value) { root.setValue(value); }
-void SectionPy::write(const std::string& path) const { root.write(path); }
-Section SectionPy::getRoot(const std::string& filePath) const { return root.getRoot(filePath); }
-std::string SectionPy::getName() const { return root.getName(); }
-std::string SectionPy::getValue() const { return root.getValue(); }
+
+SectionPy::SectionPy(const Section& root):m_root(root)
+{}
+
+Section SectionPy::getSection() const { return m_root; }
+
+void SectionPy::addChild(const SectionPy& child) 
+{ 
+	m_root.addChild(getSection()); 
+}
+
+void SectionPy::setValue(const std::string& value) { m_root.setValue(value);}
+
+void SectionPy::write(const std::string& path) const { m_root.write(path); }
+
+SectionPy SectionPy::getRoot(const std::string& filePath) const { return m_root.getRoot(filePath); }
+
+std::string SectionPy::getName() const { return m_root.getName(); }
+std::string SectionPy::getValue() const { return m_root.getValue(); }
+void SectionPy::operator=(const SectionPy& other)
+{
+	m_root = other.m_root;
+}
 
 //PYBIND11_MAKE_OPAQUE(std::string);
 //PYBIND11_MAKE_OPAQUE(std::vector<std::string>);

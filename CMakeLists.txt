@@ -4,7 +4,8 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(MAIN_SOURCE "${PROJECT_SOURCE_DIR}/source/main")
 set(MODULE_SOURCE "${PROJECT_SOURCE_DIR}/source/module")
-set(SECTION_LIB_SOURCE"${PROJECT_SOURCE_DIR}/source/libs")
+set(LIBS_SOURCE"${PROJECT_SOURCE_DIR}/source/libs")
+set(SECTION_LIB_SOURCE "source/libs/sectionLib")
 cmake_minimum_required (VERSION 3.6)
 
 # pybind11
@@ -34,8 +35,8 @@ add_executable (
 
 #add_SectionLib
 add_library(section_lib STATIC
-	source/libs/sectionLib/section.cpp
-	source/libs/sectionLib/section.hpp
+	${SECTION_LIB_SOURCE}/section.cpp
+	${SECTION_LIB_SOURCE}/section.hpp
 	)
 	
 target_include_directories(section_lib 
@@ -46,14 +47,14 @@ target_include_directories(section_lib
 target_include_directories (
     section_py_module 
     PRIVATE ${MODULE_SOURCE}
-	PRIVATE ${SECTION_LIB_SOURCE}
+	PRIVATE ${LIBS_SOURCE}
 )
 
 target_include_directories (
     main 
     PRIVATE ${MAIN_SOURCE}
     PRIVATE ${MODULE_SOURCE}
-	PRIVATE ${SECTION_LIB_SOURCE}
+	PRIVATE ${LIBS_SOURCE}
 )
 
 target_link_libraries(
@@ -71,3 +72,5 @@ add_dependencies(
 	main 
 	section_py_module
 )
+
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT main)
