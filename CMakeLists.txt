@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(MAIN_SOURCE "${PROJECT_SOURCE_DIR}/source/main")
 set(MODULE_SOURCE "${PROJECT_SOURCE_DIR}/source/module")
 set(LIBS_SOURCE"${PROJECT_SOURCE_DIR}/source/libs")
-set(SECTION_LIB_SOURCE "source/libs/sectionLib")
+set(resmgr_lib_SOURCE "source/libs/resmgr_lib")
 cmake_minimum_required (VERSION 3.6)
 
 # pybind11
@@ -34,14 +34,16 @@ add_executable (
 )
 
 #add_SectionLib
-add_library(section_lib STATIC
-	${SECTION_LIB_SOURCE}/section.cpp
-	${SECTION_LIB_SOURCE}/section.hpp
+add_library(resmgr_lib STATIC
+	${resmgr_lib_SOURCE}/section.cpp
+	${resmgr_lib_SOURCE}/section.hpp
+	${resmgr_lib_SOURCE}/resmgr.cpp
+	${resmgr_lib_SOURCE}/resmgr.hpp
 	)
 	
-target_include_directories(section_lib 
+target_include_directories(resmgr_lib 
 	PUBLIC
-		source/libs/sectionLib
+		source/libs/resmgr_lib
 )
 
 target_include_directories (
@@ -60,12 +62,12 @@ target_include_directories (
 target_link_libraries(
     main
     PRIVATE pybind11::embed
-	PRIVATE section_lib
+	PRIVATE resmgr_lib
 )
 
 target_link_libraries(
     section_py_module
-	PRIVATE section_lib
+	PRIVATE resmgr_lib
 )
 
 add_dependencies(
