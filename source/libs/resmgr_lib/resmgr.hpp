@@ -5,14 +5,16 @@ class ResMgr
 {
 private:
 	std::map<std::string, Section> m_cache;
+
 	ResMgr(const ResMgr& other) = delete;
 	ResMgr operator=(const ResMgr& other) = delete;
 	ResMgr() = default;
 
 public:
-	ResMgr& getInstance()
-	{
-		static ResMgr instance;
-		return instance;
-	}
+	static ResMgr& getInstance();
+
+	Section getSection(const std::string& filepath);
+	void addSection(const std::string& filepath);
+	bool isSection(const std::string& filepath) const;
+
 };
