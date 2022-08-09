@@ -12,7 +12,6 @@ private:
 
 public:
 	static ResMgr& getInstance();
-
 	Section getSection(const std::string& filepath);
 	void addSection(const std::string& filepath);
 	bool isSection(const std::string& filepath) const;
