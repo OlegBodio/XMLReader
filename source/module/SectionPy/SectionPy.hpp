@@ -1,4 +1,4 @@
-#include "section.hpp"
+#include "resmgr.hpp"
 #include <string>
 
 class SectionPy

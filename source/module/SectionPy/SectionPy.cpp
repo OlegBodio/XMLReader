@@ -3,6 +3,7 @@
 #include "SectionPy.hpp"
 
 PYBIND11_MAKE_OPAQUE(std::vector<std::string>);
+PYBIND11_MAKE_OPAQUE(std::map<std::string, Section>);
 
 SectionPy::SectionPy(const std::string& name, const std::string& value)
 	:m_root(name, value) 
@@ -22,7 +23,9 @@ void SectionPy::setValue(const std::string& value) { m_root.setValue(value);}
 
 void SectionPy::write(const std::string& path) const { m_root.write(path); }
 
-SectionPy SectionPy::getRoot(const std::string& filePath) const { return m_root.getRoot(filePath); }
+SectionPy SectionPy::getRoot(const std::string& filePath) const { 
+	
+	return ResMgr::getInstance().getSection(filePath); }
 
 std::string SectionPy::getName() const { return m_root.getName(); }
 std::string SectionPy::getValue() const { return m_root.getValue(); }
@@ -31,13 +34,10 @@ void SectionPy::operator=(const SectionPy& other)
 	m_root = other.m_root;
 }
 
-
-
-
-
 PYBIND11_MODULE(section_py_module, module)
 {
 	pybind11::bind_vector<std::vector<std::string>>(module, "VectorStr");
+	pybind11::bind_map<std::map<std::string, Section>>(module, "MapPathSection");
 
 	pybind11::class_<SectionPy>(module, "SectionPy")
 		.def(pybind11::init<>())

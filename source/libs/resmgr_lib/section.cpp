@@ -1,17 +1,18 @@
-#include "Section.hpp"
+#include "resmgr.hpp"
 
 using namespace SS;
 
 Section::Section(const Section& root)
-	:m_name(root.m_name)
-	,m_value(root.m_value)
-	,m_childs(root.m_childs)
+	: m_name(root.m_name)
+	, m_value(root.m_value)
+	, m_childs(root.m_childs)
 {
 
 }
 
 Section Section::getRoot(const std::string& filePath) const
 {
+
 	strings lines = Section::getLines(filePath);
 	Section root;
 	unsigned short length = lines.size();
