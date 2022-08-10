@@ -23,6 +23,7 @@ class Section
 {
 public: 
 	Section() = default;
+	Section(const Section& root);
 	Section(const std::string& name, const std::string& value = "");
 	void addChild(const Section& child);
 	void setValue(const std::string& value); 
@@ -31,6 +32,7 @@ public:
 	std::vector<Section> childs() const;
 	std::string getName() const;
 	std::string getValue() const;
+	void operator=(const Section& other);
 
 private:
 	std::string m_name = "root";

@@ -1,9 +1,18 @@
-#include "Section.hpp"
+#include "resmgr.hpp"
 
 using namespace SS;
 
+Section::Section(const Section& root)
+	: m_name(root.m_name)
+	, m_value(root.m_value)
+	, m_childs(root.m_childs)
+{
+
+}
+
 Section Section::getRoot(const std::string& filePath) const
 {
+
 	strings lines = Section::getLines(filePath);
 	Section root;
 	unsigned short length = lines.size();
@@ -103,7 +112,7 @@ void Section::write(std::fstream& f, unsigned tab) const
 
 void Section::write(const std::string& path) const
 	{
-		std::fstream f(path);
+		std::fstream f(path, std::fstream::out);
 		if (f.is_open())
 		{
 			write(f, 0);
@@ -198,4 +207,11 @@ strings Section::getLines(const std::string& filePath)
 		}
 	}
 	return lines;
+}
+
+void Section::operator=(const Section& other)
+{
+	m_name = other.m_name;
+	m_value = other.m_value;
+	m_childs = other.m_childs;
 }
