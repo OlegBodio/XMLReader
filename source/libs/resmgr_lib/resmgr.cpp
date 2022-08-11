@@ -6,11 +6,23 @@ ResMgr& ResMgr::getInstance()
 	return instance;
 }
 
-Section ResMgr::getSection(const std::string& filepath)
+Section ResMgr::getSection(const std::string& filepath, bool addCache)
 {
 	if (!(m_cache.count(filepath)))
 	{
-		m_cache[filepath] = Section().getRoot(filepath);
+		if(addCache)
+		{
+			auto section = Section().getRoot(filepath);
+			m_cache[filepath] = section;
+			return section;
+		}
+		else
+		{
+			return Section().getRoot(filepath);
+		}	
 	}
-	return m_cache.find(filepath)->first;
+	else
+	{
+		return m_cache.find(filepath)->second;
+	}
 }
