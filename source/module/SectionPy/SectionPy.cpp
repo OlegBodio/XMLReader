@@ -23,9 +23,10 @@ void SectionPy::setValue(const std::string& value) { m_root.setValue(value);}
 
 void SectionPy::write(const std::string& path) const { m_root.write(path); }
 
-SectionPy SectionPy::getRoot(const std::string& filePath) const { 
-	
-	return ResMgr::getInstance().getSection(filePath); }
+SectionPy SectionPy::getRoot(const std::string& filePath, bool addCache) const 
+{
+	return ResMgr::getInstance().getSection(filePath, addCache); 
+}
 
 std::string SectionPy::getName() const { return m_root.getName(); }
 std::string SectionPy::getValue() const { return m_root.getValue(); }
@@ -45,7 +46,7 @@ PYBIND11_MODULE(section_py_module, module)
 		.def("addChild", &SectionPy::addChild, pybind11::arg("child"))
 		.def("setValue", &SectionPy::setValue, pybind11::arg("value"))
 		.def("write", &SectionPy::write, pybind11::arg("path"))
-		.def("getRoot", &SectionPy::getRoot, pybind11::arg("filePath"))
+		.def("getRoot", &SectionPy::getRoot, pybind11::arg("filePath"), pybind11::arg("addCache") = true)
 		.def("getName", &SectionPy::getName)
 		.def("getValue", &SectionPy::getValue)
 		;

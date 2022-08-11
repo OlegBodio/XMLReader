@@ -24,8 +24,6 @@ pybind11_add_module (
     section_py_module 
     ${MODULE_SOURCE}/SectionPy/sectionPy.cpp
 	${MODULE_SOURCE}/SectionPy/sectionPy.hpp
-	${MODULE_SOURCE}/SectionPy/ResMgrPy.cpp
-	${MODULE_SOURCE}/SectionPy/ResMgrPy.hpp
 )
 
 target_include_directories (
